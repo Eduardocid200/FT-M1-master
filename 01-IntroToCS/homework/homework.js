@@ -8,13 +8,6 @@ for (var i=0; i < array.length; i++){
 sum = sum + Math.pow (2, array.length-1-i)* array[i];
 
 }return sum 
-
-
-
-
-  
-  
-
 }
 
 

@@ -13,12 +13,22 @@ Secuencia:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 
 Como ejercicio adicional y completamente opcional, al terminar de resolver este problema pueden intentar definir funciones que logren los mismos resultados pero de manera iterativa.
 */
+//5!=5*4!=4*3!=3*2!=2*1!=1*1
+function nFactorial(n) { // DECLARE UNA FUNCION Y SU PARAMETRO
+  if(n<=1) return n //concidion de corte. // COMPARE QUE EL ARGUMENTO SEA MAYOY O IGUAL SINO RETORNA EL ARGUMENTO
+else return n * nFactorial(n - 1); // repite descontando 1 hasta llegar a 1 retornandolo.// RETORNA ARG * FUNCIONCION CON EL ARG EN DECREMENTO (-1)
+  }
+ 
 
-function nFactorial(n) {
+function nFibonacci(n) { 
+  if (n<= 1) return n
+  return nFibonacci(n - 1) + nFibonacci(n - 2);
+
+
+
+/* console.log(nFibonacci(7))   */
 }
 
-function nFibonacci(n) {
-}
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
