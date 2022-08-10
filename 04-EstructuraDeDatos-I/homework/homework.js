@@ -43,33 +43,17 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-class queue 
-{
-constructor ()
-{
-  this.items = [];
+ this.array =[];
 }
-enqueue()
-{
-  this.items.push()
+ Queue.prototype.size = function(){
+  return this.array.length 
 }
-dequeue()
-{
- if ( this.items.lenght=0){
-  return undefined;
-}else {
-  return this.items.shift()
-};
-
-size()
-{
-  if (this.items.length>0)
-return this.items[0]
-}
-}
-}
-
-} 
+ Queue.prototype.enqueue = function(elem){
+  this.array.push(elem)
+ }
+ Queue.prototype.dequeue = function(elem){
+return this.array.shift(elem)
+ }
 
 
 // No modifiquen nada debajo de esta linea
