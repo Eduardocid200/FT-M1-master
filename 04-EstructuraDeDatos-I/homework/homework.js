@@ -1,5 +1,8 @@
 'use strict'
 
+const { queue } = require("@11ty/eleventy-cache-assets");
+const { size } = require("@11ty/eleventy/src/TemplateCache");
+
 /*
 Definir las funciones recursivas nFactorial y nFibonacci.
 
@@ -16,7 +19,7 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 //5!=5*4!=4*3!=3*2!=2*1!=1*1
 function nFactorial(n) { // DECLARE UNA FUNCION Y SU PARAMETRO
   if(n<=1) return n //concidion de corte. // COMPARE QUE EL ARGUMENTO SEA MAYOY O IGUAL SINO RETORNA EL ARGUMENTO
-else return n * nFactorial(n - 1); // repite descontando 1 hasta llegar a 1 retornandolo.// RETORNA ARG * FUNCIONCION CON EL ARG EN DECREMENTO (-1)
+else return n * nFactorial(n - 1); //  repite descontando 1 hasta llegar a 1 retornandolo.// RETORNA ARG * FUNCIONCION CON EL ARG EN DECREMENTO (-1)
   }
  
 
@@ -40,8 +43,34 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-
+class queue 
+{
+constructor ()
+{
+  this.items = [];
 }
+enqueue()
+{
+  this.items.push()
+}
+dequeue()
+{
+ if ( this.items.lenght=0){
+  return undefined;
+}else {
+  return this.items.shift()
+};
+
+size()
+{
+  if (this.items.length>0)
+return this.items[0]
+}
+}
+}
+
+} 
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------

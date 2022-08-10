@@ -70,18 +70,9 @@ if(cache.hasOwnProperty(arg)){
  }
 }
 
-//----------------
-/*let cache={}
-return function operacion(arg){
-   if(cache.hasOwnProperty(arg)){
-     return cache[arg]
-   }else{
-     cache[arg]=cb(arg)
-     return cache[arg]
-   }
-}
 
-}*/
+
+
 
 // Bind
 
