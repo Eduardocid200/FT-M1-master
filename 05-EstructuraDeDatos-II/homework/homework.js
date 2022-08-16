@@ -1,5 +1,8 @@
 "use strict";
 
+const { add } = require("@11ty/eleventy/src/TemplateCache");
+const { listenerCount } = require("@11ty/eleventy/src/Util/AsyncEventEmitter");
+
 /*
 Implementar la clase LinkedList, definiendo los siguientes métodos:
   - add: agrega un nuevo nodo al final de la lista;
@@ -10,13 +13,87 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   search(isEven), donde isEven es una función que retorna true cuando recibe por parámetro un número par, busca un nodo cuyo valor sea un número par.
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
+function LinkedList(){
+ this.head = null;
+  };
 
-function LinkedList() {}
+function Node(value){
+  this.value = value;
+  this.next = null;
+};
+LinkedList.prototype.add=function(value){
+let newNode = new Node(value);
+    if (!this.head){
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while( current.next){
+      current = current.next;
+      }
+      current.next = newNode;
+    return newNode;
+    } 
+  }
+  LinkedList.prototype.remove= function(){
+    if(this.head==null){
+    return null;
+    }if(this.head.next==null){ // si mi primer nodo su next es null
+      let save= {}//
+      save = this.head.value// guarda el valor de ese node en save cortando la funcion
+      this.head= null// estas borrando el primer nodo
+      return save
+    }else {//si el primer nodo si tiene un valor en next ejecuto esto
+      let current = this.head//me posiciono en le primer nodo sabeiendo que existe un segundo
+      let save = {}
+      while(current.next){//si existe current. next hace...
+        if(!current.next.next== null) //si current.next.next es distinto de null
+        current=current.next//posiciona a current en el sigueinte nodo
+        else (current.next.next== null)//si current.next.next es igual a null 
+         save = current.next.value//guarda y devolveme el valor de current. next
+         current.next= null
+         return save
+  
+      }
+    }
+  }
 
-function Node(value) {}
+  LinkedList.prototype.search= function(value){
+    if(!this.head) return null;
+    let current= this.head;
+    while(current){
+      if(current.value=== value) return current.value;
+      else if(typeof value == 'function') {
+        if(value(current.value)){
+          return current.value
+        }
+      }
+      current = current.next
+    } 
+    return null
+  }
+/*delete(data) {
 
-/*
-Implementar la clase HashTable.
+let list = new LinkedList;
+console.log(list);
+list.add(10);
+list.add(5);
+console.log(list);
+*/
+
+    /*}
+  list.prototype.getAll= function(){
+    let current = this.head;
+    if(!current){
+      return null;
+    }
+  }*/
+
+
+
+
+
+
+/*Implementar la clase HashTable.
 
 Nuetra tabla hash, internamente, consta de un arreglo de buckets (slots, contenedores, o casilleros; es decir, posiciones posibles para almacenar la información), donde guardaremos datos en formato clave-valor (por ejemplo, {instructora: 'Ani'}).
 Para este ejercicio, la tabla debe tener 35 buckets (numBuckets = 35). (Luego de haber pasado todos los tests, a modo de ejercicio adicional, pueden modificar un poco la clase para que reciba la cantidad de buckets por parámetro al momento de ser instanciada.)
