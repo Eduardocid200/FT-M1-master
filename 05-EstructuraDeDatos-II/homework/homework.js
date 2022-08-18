@@ -73,17 +73,6 @@ let newNode = new Node(value);
   }
 
 
-
-
-
-
- 
-
-
-
-
-
-
 /*Implementar la clase HashTable.
 
 Nuetra tabla hash, internamente, consta de un arreglo de buckets (slots, contenedores, o casilleros; es decir, posiciones posibles para almacenar la información), donde guardaremos datos en formato clave-valor (por ejemplo, {instructora: 'Ani'}).
@@ -99,28 +88,34 @@ Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero
 */
 
 function HashTable() {
-this.numBucket = 35;
-this.buckets = [];
+this.numBuckets = 35;
+this.buckets = new Array(this.numBuckets);
 }
 
-HashTable.prototype.hash = function(key){
+HashTable.prototype.hash = function(key) {
   let sum = 0;
   for (let i = 0; i < key.length; i++) {
     sum = sum + key.charCodeAt(i);
        }
-  return sum % this.numBucket;
+  return sum % 35;
 }
-HashTable.prototype.set = function(key, value){
-  let bucketnumber = this.hash(key);
-  this.buckets[bucketnumber]=value; 
 
-}
-HashTable.prototype.get = function(){
+
+HashTable.prototype.set = function (key, value) {
+  if( typeof key !== 'string') throw new TypeError('Keys must be strings');
   let bucketNumber = this.hash(key);
-  return this.buckets[bucketNumber]
+ if(!this.buckets[bucketNumber]) {
+  this.buckets[bucketNumber] = {};
+ }
+this.buckets[bucketNumber][key]= value
 }
-HashTable.prototype.hashkey = function(){
-  
+HashTable.prototype.get = function() {
+  let bucketNumber = this.hash(key);
+  return this.buckets[bucketNumber][key]
+}
+HashTable.prototype.hasKey = function(key) {
+  let bucketNumber = this.hash(key)
+  return this.buckets.bucketNumber.hasOwnProperty(key)
 }
 
 // No modifiquen nada debajo de esta linea
