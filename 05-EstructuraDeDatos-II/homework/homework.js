@@ -23,47 +23,47 @@ function Node(value){
 };
 LinkedList.prototype.add=function(value){
 let newNode = new Node(value);
-    if (!this.head){
-      this.head = newNode;
+    if (!this.head){ //this.head=null
+      this.head = newNode; // this.head va a ser un nuevo nodo
     } else {
-      let current = this.head;
-      while(current.next){
-      current = current.next;
+      let current = this.head; // current=actual nodo  
+      while(current.next){ //mientras actual sea true
+      current = current.next; //actual va a ser el siguiente
       }
-      current.next = newNode;
-    return newNode;
+      current.next = newNode; // se va a hacer un nodo siguiente
+    return newNode; //devuelve el nuevonodo
     } 
   }
   LinkedList.prototype.remove= function(){
-    if(this.head==null){
-    return null;
-    }if(this.head.next==null){ // si mi primer nodo su next es null
-      let save= {}//
+    if(this.head==null){ //si head es null
+    return null; //devuelve null
+    }if(this.head.next==null){ // si mi primer nodo => next es null
+      let save= {}// creo una variable como objeto
       save = this.head.value// guarda el valor de ese node en save cortando la funcion
       this.head= null// estas borrando el primer nodo
-      return save
+      return save //devuelvo el save
     }else {//si el primer nodo si tiene un valor en next ejecuto esto
       let current = this.head//me posiciono en le primer nodo sabeiendo que existe un segundo
       let save = {}
       while(current.next){//si existe current. next hace...
-        if(!current.next.next== null) //si current.next.next es distinto de null
-        current=current.next//posiciona a current en el sigueinte nodo
+        if(!current.next.next== null) //si current.next.next es distinto de null 
+        current=current.next//posiciona a current en el sigueinte nodo retrocedo al 2 
         else (current.next.next== null)//si current.next.next es igual a null 
-         save = current.next.value//guarda y devolveme el valor de current. next
-         current.next= null
-         return save
+         save = current.next.value//guarda y devolveme el valor de current.next
+         current.next= null //actual va a ser null
+         return save //devuelvo el valor del ultimo nodo 
 
       }
     }
   }
 
-  LinkedList.prototype.search= function(value){
-    if(!this.head) return null;
-    let current= this.head;
-    while(current){
-      if(current.value=== value) return current.value;
-      else if(typeof value == 'function') {
-        if(value(current.value)){
+  LinkedList.prototype.search= function(value){ //creamos la funcion "buscar"
+    if(!this.head) return null; //si this.head es null devuelvo null
+    let current= this.head; //creamos variable actaul y la hacemos head
+    while(current){ //mientras actual sea true
+      if(current.value=== value) return current.value; // si=> el valor del modulo actual tiene un valor
+      else if(typeof value == 'function') { //entonces si el valor de la funcion es "funcion en string"
+        if(value(current.value)){ // si el valor 
           return current.value
         }
       }
@@ -101,17 +101,17 @@ HashTable.prototype.hash = function(key) {
 }
 
 
-HashTable.prototype.set = function (key, value) {
-  if( typeof key !== 'string') throw new TypeError('Keys must be strings');
-  let bucketNumber = this.hash(key);
- if(!this.buckets[bucketNumber]) {
-  this.buckets[bucketNumber] = {};
+HashTable.prototype.set = function (key,value) {
+  if(typeof key != 'string') throw new TypeError('Keys must be strings');
+  let posarr = this.hash(key);
+ if(this.buckets[posarr] === undefined) {
+  this.buckets[posarr] = {};
  }
-this.buckets[bucketNumber][key]= value
-}
+this.buckets[posarr][key] = value;
+};
 HashTable.prototype.get = function() {
-  let bucketNumber = this.hash(key);
-  return this.buckets[bucketNumber][key]
+  let posarr = this.hash(key);
+  return this.buckets[posarr][key]
 }
 HashTable.prototype.hasKey = function(key) {
   let bucketNumber = this.hash(key)
