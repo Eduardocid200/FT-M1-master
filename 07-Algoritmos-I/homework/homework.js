@@ -7,7 +7,7 @@ function factorear(num) {
   // Ej: factorear(180) --> [1, 2, 2, 3, 3, 5] Ya que 1x2x2x3x3x5 = 180 y son todos números primos
   // Tu código:
    // DECLARE UNA FUNCION Y SU PARAMETRO
-   let result = [];
+   let result = [1];
    let i = 2 ;
    while (num > 1){
      
@@ -19,10 +19,10 @@ function factorear(num) {
          i++
      }
    }
-   result.unshift(1)
+   //
    return result
  }
- console.log(factorear(8000))
+ console.log(factorear(800))
 
 function bubbleSort(array) {
   // Implementar el método conocido como bubbleSort para ordenar de menor a mayor
@@ -49,10 +49,8 @@ function insertionSort(array) {
   // Tu código:
       let n = array.length;
         for (let i = 1; i < n; i++) {
-            // Choosing the first element in our unsorted subarray
-            let current = array[i];
-            // The last element of our sorted subarray
-            let j = i-1; 
+                  let current = array[i];
+                     let j = i-1; 
             while ((j > -1) && (current < array[j])) {
                 array[j+1] = array[j];
                 j--;
@@ -63,8 +61,8 @@ function insertionSort(array) {
       }
     //const result = insertionSort(array);
   
- let array =[15,20,4,35,55,1]; 
-insertionSort(array);
+//  let array =[15,20,4,35,55,1]; 
+// insertionSort(array);
 
 function selectionSort(array) {
   // Implementar el método conocido como selectionSort para ordenar de menor a mayor
